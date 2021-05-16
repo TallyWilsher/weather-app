@@ -23,3 +23,5 @@ describe('WeatherComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+// todo write tests around the services and funtions
