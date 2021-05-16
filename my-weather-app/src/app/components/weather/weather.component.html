@@ -1,0 +1,28 @@
+<h1>Weather</h1>
+<form [formGroup]="weatherSearchForm" (ngSubmit)="onSubmit()">
+  <label>Please pick a State:</label>
+  <select class="dropDown"  formControlName="state">
+    <option *ngFor="let state of states" [ngValue]="state.value" >{{state.viewValue}}</option>
+  </select>
+
+  <p>Form value: {{ weatherSearchForm.value | json }}</p>
+
+  <p>
+    <button [disabled]="!weatherSearchForm.valid" (click)="onSubmit()">Get Weather</button>
+  </p>
+</form>
+
+
+
+
+<p>
+  ID:{{stateInfo.id}}<br>
+  STATE:{{stateInfo.state}}<br>
+  LOCATION:{{stateInfo.name}}<br>
+</p>
+
+<p *ngFor="let df of dailyForecast">
+  NUMERO:{{df.number}}<br>
+  TIME:{{df.name}}<br>
+  FORECAST:{{df.detailedForecast}}<br>
+</p>
