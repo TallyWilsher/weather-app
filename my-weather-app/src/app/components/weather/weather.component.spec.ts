@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WeatherService } from 'src/app/services/weather.service';
 
 import { WeatherComponent } from './weather.component';
 
@@ -8,7 +11,11 @@ describe('WeatherComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WeatherComponent ]
+      declarations: [ 
+        WeatherComponent,
+        WeatherService,
+        ReactiveFormsModule, 
+      ]
     })
     .compileComponents();
   });
@@ -23,7 +30,26 @@ describe('WeatherComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  //todo
+  describe('ngOnInit', () => {
+    it('should intitialize the weather search form', () => {
+      //Arrange
+      //Act
+      //Assert
+      expect(component).toBeTruthy();
+    });
+  });
+
+  //todo
+  describe('onSubmit', () => {
+    it('should call submit the weather search form', () => {
+      //Arrange
+      //Act
+      //Assert
+      expect(component).toBeTruthy();
+    });
+  });
   
 });
 
-// todo write tests around the services and funtions
+ 
