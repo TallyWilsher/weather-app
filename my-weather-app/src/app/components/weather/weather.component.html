@@ -1,28 +1,40 @@
-<h1>Weather</h1>
-<form [formGroup]="weatherSearchForm" (ngSubmit)="onSubmit()">
-  <label>Please pick a State:</label>
-  <select class="dropDown"  formControlName="state">
-    <option *ngFor="let state of states" [ngValue]="state.value" >{{state.viewValue}}</option>
-  </select>
+<header>
+  <h1>Weather</h1>
+</header>
 
-  <p>Form value: {{ weatherSearchForm.value | json }}</p>
+<body>
+  <div class="weather-app-container">
+    <div class="weather-search">
+      <form [formGroup]="weatherSearchForm" (ngSubmit)="onSubmit()">
+        <h2>Please pick a State:</h2>
+        <select class="dropDown" formControlName="state">
+          <option value="*" disabled selected>Please select...</option>
+          <option *ngFor="let state of states" [ngValue]="state.value">{{state.viewValue}}</option>
+        </select>
+        <p>
+          <button class="weather-search-button" [disabled]="!weatherSearchForm.valid" (click)="onSubmit()">Get
+            Weather</button>
+        </p>
+      </form>
+    </div>
 
-  <p>
-    <button [disabled]="!weatherSearchForm.valid" (click)="onSubmit()">Get Weather</button>
-  </p>
-</form>
 
+    <div *ngIf="buttonClicked" class="forecast-container">
+      <div id="forecast">
+        <div id="state-info">
+          <h2>State:</h2>
+          <div id="state-text">{{stateInfo.state}}</div><br>
+          <h2>Location:</h2>
+          <div id="location-text">{{stateInfo.name}}</div><br>
+        </div>
+      </div>
 
-
-
-<p>
-  ID:{{stateInfo.id}}<br>
-  STATE:{{stateInfo.state}}<br>
-  LOCATION:{{stateInfo.name}}<br>
-</p>
-
-<p *ngFor="let df of dailyForecast">
-  NUMERO:{{df.number}}<br>
-  TIME:{{df.name}}<br>
-  FORECAST:{{df.detailedForecast}}<br>
-</p>
+      <div class="daily-forecast">
+        <div id="daily-forecast-info" *ngFor="let df of dailyForecast | slice:0:10; let i=index">
+          <div id="day-text">{{df.name}}</div><br>
+          <div id="forcast-text">{{df.detailedForecast}}</div><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

@@ -19,9 +19,11 @@ describe('WeatherComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create weather component', () => {
     expect(component).toBeTruthy();
   });
+
+  
 });
 
 // todo write tests around the services and funtions

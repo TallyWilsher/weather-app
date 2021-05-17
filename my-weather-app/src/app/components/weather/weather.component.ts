@@ -14,6 +14,8 @@ export class WeatherComponent implements OnInit {
 
   public weatherSearchForm: FormGroup;
   // state: string;
+  public buttonClicked: boolean;
+  
 
   states: IStates[] = [
   {value: 'AL' , viewValue: 'Alabama'},
@@ -88,6 +90,7 @@ export class WeatherComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
+    this.buttonClicked = false;
     this.weatherSearchForm = this.fb.group({
       state: ["", Validators.required],
     });
@@ -96,6 +99,7 @@ export class WeatherComponent implements OnInit {
 
 
   public onSubmit() {
+    this.buttonClicked = true;
     this.weatherService.getLocationId(this.weatherSearchForm.value.state)
       .pipe(
         map(res => this.stateInfo = res.features[0].properties),

@@ -1,6 +1,175 @@
-.dropDown {
-    width: auto;
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 80px;
+    margin: 0;
+    padding: 15px;
+    
+}
+
+select {
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid #8ecae6;
+    padding: 5px;
+    background-color: transparent;
+    font-family: 'Reem Kufi', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-align-last:center;
+}
+
+form {
+    padding: 50px;
+}
+
+    .weather-search-button {
+        box-shadow: 0px 10px 14px -7px #276873;
+        background:linear-gradient(to bottom, #023047 5%, #408c99 100%);
+        background-color:#023047;
+        border-radius:8px;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:20px;
+        font-weight:bold;
+        padding:13px 32px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #3d768a;
+    }
+    .weather-search-button:hover {
+        background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+        background-color:#408c99;
+    }
+    .weather-search-button:active {
+        position:relative;
+        top:1px;
+    }
+
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: fit-content;
+    background-color: #219ebc;
+}
+
+.weather-app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.weather-search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.forecast-container {
+
+    flex-direction: column;
+    display: flex;
+    align-items: baseline;
+
+
+    #forecast {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 5px;
+        overflow: auto;
+    
+        > div {
+            background-color: #219ebc;
+            padding: 12px;
+        }
+    
+        #state-info {
+            padding: 25px;
+        }
+    
+    }
 }
 
 
-// to do all of the styling and media queiries mobile friendly
+
+#daily-forecast-info {
+    background-color: #ffb703;
+    border: 1px solid #fb8500;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#daily-forecast-info {
+    padding: 5px;
+}
+
+
+
+
+.dropDown {
+    width: 200px;
+    // display: flex;
+    // flex-direction: column;
+}
+
+#state-text {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+#location-text {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+#day-text {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2.5px;
+}
+#forcast-text {
+    color: white;
+    font-size: 18px;
+}
+@media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 30px;
+    }
+
+    form {
+        // padding-top: 350px;
+        padding: 0px;
+        padding-left: 5px;
+    }
+
+    body {
+        display: flex;
+    
+        background-color: #219ebc;
+
+        .weather-search {
+        display: inline;
+        }
+
+        .forecast-container {
+
+
+            #forecast {
+            
+                padding: 5px;
+                overflow: auto;
+        
+            }
+        }
+    
+        
+        
+    }
+
+
+  }
