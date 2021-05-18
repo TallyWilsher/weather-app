@@ -12,18 +12,13 @@ export class WeatherService {
 
   public getLocationId(state: string): Observable<any> {
 
-    let request$ = this.http.get<any>('https://api.weather.gov/zones?area=' + state + "&type=forecast&limit=3");
-
-    return request$;
-
+    return this.http.get<any>('https://api.weather.gov/zones?area=' + state + "&type=forecast&limit=3");
 
   }
 
   public getWeatherReport(id: string): Observable<any> {
 
-    let request$ = this.http.get<any>('https://api.weather.gov/zones/forecast/' + id + '/forecast');
-
-    return request$;
+    return this.http.get<any>('https://api.weather.gov/zones/forecast/' + id + '/forecast');
 
   }
 

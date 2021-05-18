@@ -30,7 +30,7 @@
       </div>
 
       <div class="daily-forecast">
-        <div id="daily-forecast-info" *ngFor="let df of dailyForecast | slice:0:10; let i=index">
+        <div id="daily-forecast-info" *ngFor="let df of dailyForecast">
           <div id="day-text">{{df.name}}</div><br>
           <div id="forcast-text">{{df.detailedForecast}}</div><br>
         </div>

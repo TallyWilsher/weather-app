@@ -1,33 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { map } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { IDailyForecast, IStates, IWeather } from 'src/app/models/weather';
 import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.scss']
+  styleUrls: ['./weather.component.scss'],
 })
 export class WeatherComponent implements OnInit {
-
   public weatherSearchForm: FormGroup;
   public buttonClicked: boolean;
   public weeklyForecast: Array<IDailyForecast>;
-  public id: string
+  public id: string;
 
   public stateInfo: IWeather = {
-    id: "",
-    name: "",
-    state: "",
+    id: '',
+    name: '',
+    state: '',
   };
 
-  public dailyForecast: IDailyForecast = {
-    number: "",
-    name: "",
-    detailedForecast: ""
-  };
-
+  public dailyForecast: IDailyForecast[] = [{
+    number: '',
+    name: '',
+    detailedForecast: '',
+  }];
 
   states: IStates[] = [
     { value: 'AL', viewValue: 'Alabama' },
@@ -82,38 +80,30 @@ export class WeatherComponent implements OnInit {
     { value: 'WY', viewValue: 'Wyoming' },
   ];
 
-
-
-
   constructor(
     private fb: FormBuilder,
-    private weatherService: WeatherService,
-  ) { }
+    private weatherService: WeatherService
+  ) {}
 
   public ngOnInit(): void {
     this.buttonClicked = false;
     this.weatherSearchForm = this.fb.group({
-      state: ["", Validators.required],
+      state: ['', Validators.required],
     });
-
   }
-
 
   public onSubmit() {
     this.buttonClicked = true;
-    this.weatherService.getLocationId(this.weatherSearchForm.value.state)
+    this.weatherService
+      .getLocationId(this.weatherSearchForm.value.state)
       .pipe(
-        map(res => this.stateInfo = res.features[0].properties),
-      ).subscribe(() => {
-        this.weatherService.getWeatherReport(this.stateInfo.id)
-          .pipe(
-            map(res => this.dailyForecast = res.properties.periods),
-          ).subscribe(() => {
-            res => this.dailyForecast = res.properties.periods
-          });
-      }
-      )
-
+        map((res) => {
+          this.stateInfo = res.features[0].properties;
+        }),
+        switchMap(() =>
+          this.weatherService.getWeatherReport(this.stateInfo.id)
+        ),
+        tap((res) => (this.dailyForecast = res.properties.periods)),
+      ).subscribe();
   }
-
 }
