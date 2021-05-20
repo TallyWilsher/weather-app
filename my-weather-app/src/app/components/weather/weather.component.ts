@@ -21,11 +21,13 @@ export class WeatherComponent implements OnInit {
     state: '',
   };
 
-  public dailyForecast: IDailyForecast[] = [{
-    number: '',
-    name: '',
-    detailedForecast: '',
-  }];
+  public dailyForecast: IDailyForecast[] = [
+    {
+      number: '',
+      name: '',
+      detailedForecast: '',
+    },
+  ];
 
   states: IStates[] = [
     { value: 'AL', viewValue: 'Alabama' },
@@ -103,7 +105,8 @@ export class WeatherComponent implements OnInit {
         switchMap(() =>
           this.weatherService.getWeatherReport(this.stateInfo.id)
         ),
-        tap((res) => (this.dailyForecast = res.properties.periods)),
-      ).subscribe();
+        tap((res) => (this.dailyForecast = res.properties.periods))
+      )
+      .subscribe();
   }
 }

@@ -9,30 +9,40 @@
         <h2>Please pick a State:</h2>
         <select class="dropDown" formControlName="state">
           <option value="*" disabled selected>Please select...</option>
-          <option *ngFor="let state of states" [ngValue]="state.value">{{state.viewValue}}</option>
+          <option *ngFor="let state of states" [ngValue]="state.value">
+            {{ state.viewValue }}
+          </option>
         </select>
         <p>
-          <button class="weather-search-button" [disabled]="!weatherSearchForm.valid" (click)="onSubmit()">Get
-            Weather</button>
+          <button
+            class="weather-search-button"
+            [disabled]="!weatherSearchForm.valid"
+            (click)="onSubmit()"
+          >
+            Get Weather
+          </button>
         </p>
       </form>
     </div>
-
 
     <div *ngIf="buttonClicked" class="forecast-container">
       <div id="forecast">
         <div id="state-info">
           <h2>State:</h2>
-          <div id="state-text">{{stateInfo.state}}</div><br>
+          <div id="state-text">{{ stateInfo.state }}</div>
+          <br />
           <h2>Location:</h2>
-          <div id="location-text">{{stateInfo.name}}</div><br>
+          <div id="location-text">{{ stateInfo.name }}</div>
+          <br />
         </div>
       </div>
 
       <div class="daily-forecast">
         <div id="daily-forecast-info" *ngFor="let df of dailyForecast">
-          <div id="day-text">{{df.name}}</div><br>
-          <div id="forcast-text">{{df.detailedForecast}}</div><br>
+          <div id="day-text">{{ df.name }}</div>
+          <br />
+          <div id="forcast-text">{{ df.detailedForecast }}</div>
+          <br />
         </div>
       </div>
     </div>

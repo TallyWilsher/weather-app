@@ -11,13 +11,8 @@ describe('WeatherComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ 
-        WeatherComponent,
-        WeatherService,
-        ReactiveFormsModule, 
-      ]
-    })
-    .compileComponents();
+      declarations: [WeatherComponent, WeatherService, ReactiveFormsModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -49,7 +44,4 @@ describe('WeatherComponent', () => {
       expect(component).toBeTruthy();
     });
   });
-  
 });
-
- 

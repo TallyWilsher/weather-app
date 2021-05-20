@@ -9,9 +9,7 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
@@ -19,7 +17,7 @@ describe('AppComponent', () => {
     //Arrange
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    
+
     //Act
 
     //Assert
@@ -36,5 +34,4 @@ describe('AppComponent', () => {
     //Assert
     expect(app.title).toEqual('my-weather-app');
   });
-
 });

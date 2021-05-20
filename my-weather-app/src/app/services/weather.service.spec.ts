@@ -8,11 +8,9 @@ describe('WeatherService', () => {
   let httpClientSpy: { get: jasmine.Spy };
 
   beforeEach(() => {
-    TestBed.configureTestingModule(
-      {providers: [WeatherService]}
-      );
+    TestBed.configureTestingModule({ providers: [WeatherService] });
     weatherService = TestBed.inject(WeatherService);
-  
+
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
     weatherService = new WeatherService(httpClientSpy as any);
   });
@@ -28,15 +26,15 @@ describe('WeatherService', () => {
   describe('getLocationId', () => {
     it('should get the location id', () => {
       //Arrange
-      let fakeId = "UTZ001"
+      let fakeId = 'UTZ001';
       //Act
       weatherService.getLocationId(fakeId);
       //Assert
-      expect(weatherService.getLocationId).toHaveBeenCalledWith("UTZ001");
+      expect(weatherService.getLocationId).toHaveBeenCalledWith('UTZ001');
     });
     it('should get the location id', () => {
       //Arrange
-      let fakeId = "UTZ001"
+      let fakeId = 'UTZ001';
       //Act
       weatherService.getLocationId(fakeId);
       //Assert
@@ -53,5 +51,4 @@ describe('WeatherService', () => {
       expect(weatherService).toBeTruthy();
     });
   });
-
 });
