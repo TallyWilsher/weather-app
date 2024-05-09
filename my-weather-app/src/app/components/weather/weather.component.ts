@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { IDailyForecast, IStates, IWeather } from 'src/app/models/weather';
 import { WeatherService } from 'src/app/services/weather.service';
@@ -10,7 +10,7 @@ import { WeatherService } from 'src/app/services/weather.service';
   styleUrls: ['./weather.component.scss'],
 })
 export class WeatherComponent implements OnInit {
-  public weatherSearchForm: FormGroup;
+  public weatherSearchForm: UntypedFormGroup;
   public buttonClicked: boolean;
   public weeklyForecast: Array<IDailyForecast>;
   public id: string;
@@ -83,7 +83,7 @@ export class WeatherComponent implements OnInit {
   ];
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private weatherService: WeatherService
   ) {}
 
